@@ -17,6 +17,7 @@ public class CourseController
     @Autowired
     private CourseService courseService;
 
+    // GET request http://localhost:2019/courses
     @GetMapping(value = "/courses", produces = {"application/json"})
     public ResponseEntity<?> listAllCourses()
     {
@@ -24,12 +25,14 @@ public class CourseController
         return new ResponseEntity<>(myCourses, HttpStatus.OK);
     }
 
+    // GET request http://localhost:2019/studcount
     @GetMapping(value = "/studcount", produces = {"application/json"})
     public ResponseEntity<?> getCountStudentsInCourses()
     {
         return new ResponseEntity<>(courseService.getCountStudentsInCourse(), HttpStatus.OK);
     }
 
+    // DELETE request http://localhost:2019/courses/{courseid}
     @DeleteMapping("/courses/{courseid}")
     public ResponseEntity<?> deleteCourseById(@PathVariable long courseid)
     {
